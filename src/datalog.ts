@@ -1340,27 +1340,51 @@ export function newTable<T extends {}>(schema: TableSchema<T>): Table<T> {
     return _newTable(undefined, false, schema)
 }
 
-export const StringType = {
+export interface SchemaType {
+    typeName: string
+    validate: (t: any) => boolean;
+}
+export interface SchemaStringType extends SchemaType {
+    typeName: 'string',
+}
+
+export interface SchemaNumberType extends SchemaType {
+    typeName: 'number',
+}
+
+export interface SchemaBoolType extends SchemaType {
+    typeName: 'boolean',
+}
+
+export interface SchemaObjectType extends SchemaType {
+    typeName: 'object',
+}
+
+export interface SchemaArrayType extends SchemaType {
+    typeName: 'object',
+}
+
+export const StringType: SchemaStringType = {
     typeName: 'string',
     validate: (t: any): t is string => typeof t === 'string'
 }
 
-export const NumberType = {
+export const NumberType: SchemaNumberType = {
     typeName: 'number',
     validate: (t: any): t is number => typeof t === 'number'
 }
 
-export const BoolType = {
+export const BoolType: SchemaBoolType = {
     typeName: 'boolean',
     validate: (t: any): t is boolean => typeof t === 'boolean'
 }
 
-export const ObjectType = {
+export const ObjectType: SchemaObjectType = {
     typeName: 'object',
     validate: (t: any): t is Object => typeof t === 'object'
 }
 
-export const ArrayType = {
+export const ArrayType: SchemaArrayType = {
     typeName: 'object',
     validate: (t: any): t is Array<any> => Array.isArray(t)
 }
