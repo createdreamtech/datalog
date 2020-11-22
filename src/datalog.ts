@@ -1333,9 +1333,9 @@ function isAutoKey(k: string): boolean {
 
 // TODO these validators are not used
 // type TypeValidator = { typeName: string, validate: (t: any) => boolean }
-type TypeValidator<T> = { typeName: string, validate: (t: any) => t is T }
+export type TypeValidator<T> = { typeName: string, validate: (t: any) => t is T }
 // type TableSchema<Keys extends string | number | symbol> = { [K in Keys]: TypeValidator }
-type TableSchema<T> = { [K in keyof T]: TypeValidator<T[K]> }
+export type TableSchema<T> = { [K in keyof T]: TypeValidator<T[K]> }
 export function newTable<T extends {}>(schema: TableSchema<T>): Table<T> {
     return _newTable(undefined, false, schema)
 }

@@ -12,6 +12,8 @@ export {
   StringType,
   Table,
   View,
+  TableSchema,
+  TypeValidator,
   intoTable,
   newTable,
   query,
