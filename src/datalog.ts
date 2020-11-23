@@ -1364,12 +1364,12 @@ export interface SchemaArrayType extends SchemaType<Array<any>> {
     typeName: 'object',
 }
 
-export const StringType = {
+export const StringType: SchemaStringType = {
     typeName: 'string',
     validate: (t: any): t is string => typeof t === 'string'
 }
 
-export const NumberType = {
+export const NumberType: SchemaNumberType = {
     typeName: 'number',
     validate: (t: any): t is number => typeof t === 'number'
 }
